@@ -13,7 +13,7 @@ server.on('request', function(req, res){
         });
     } else {
         fs.readFile('./assets/404.gif', function(err, data){
-            res.writeHead(200, {
+            res.writeHead(404, {
                 "Content-Type": "image/gif"
             });
             res.write(data);
