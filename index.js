@@ -4,31 +4,23 @@ var server = http.createServer();
 
 server.on('request', function(req, res){
     if(req.method === 'GET' && req.url === '/') {
-        try {
-            fs.readFile('./assets/index.html', function(err, data){
-                if (err) throw err;
-                res.writeHead(200, {
-                    "Content-Type": "text/html; charset=utf-8"
-                });
-                res.write(data);
-                res.end();
+        fs.readFile('./assets/index.html', function(err, data){
+            if (err) throw err;
+            res.writeHead(200, {
+                "Content-Type": "text/html; charset=utf-8"
             });
-        } catch(err) {
-            console.error(err);
-        }
+            res.write(data);
+            res.end();
+        });
     } else {
-        try {
-            fs.readFile('./assets/404.gif', function(err, data){
-                if (err) throw err;
-                res.writeHead(404, {
-                    "Content-Type": "image/gif"
-                });
-                res.write(data);
-                res.end();
+        fs.readFile('./assets/404.gif', function(err, data){
+            if (err) throw err;
+            res.writeHead(404, {
+                "Content-Type": "image/gif"
             });
-        } catch(err) {
-            console.error(err);
-        }
+            res.write(data);
+            res.end();
+        });
     }
 });
 
